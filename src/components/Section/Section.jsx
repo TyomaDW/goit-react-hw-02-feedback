@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 import styles from './Section.module.css';
 
-const Section = props => {
+const Section = ({ title, children }) => {
   return (
     <section className={styles.section}>
-      {props.title && <span className={styles.title}>{props.title}</span>}
-      {props.children}
+      {title && <span className={styles.title}>{title}</span>}
+      {children}
     </section>
   );
 };

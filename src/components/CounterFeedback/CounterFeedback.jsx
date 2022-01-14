@@ -48,6 +48,8 @@ class CounterFeedback extends React.Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
+    const result = Object.values(this.state).every(value => value === 0);
     return (
       <div className={styles.counter}>
         <Section title="Please leave feedback">
@@ -58,13 +60,13 @@ class CounterFeedback extends React.Component {
         </Section>
 
         <Section title="Statistics">
-          {Object.values(this.state).every(value => value === 0) ? (
+          {result ? (
             <Notification message="No feedback given" />
           ) : (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             ></Statistics>
